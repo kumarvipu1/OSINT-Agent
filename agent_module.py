@@ -95,6 +95,8 @@ class agent_response(BaseModel):
     pdf_path: str = Field(description="The path to the pdf file")
     code_string: str = Field(description="The code string to be executed")
     aql_query: str = Field(description="The aql query to be executed")
+    csv_path: str = Field(description="The path where csv file is stored")
+    pdf_path: str = Field(description = "The path where pdf is stored")
     
 
 #Initialize agent model

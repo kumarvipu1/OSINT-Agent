@@ -12,6 +12,7 @@ import nest_asyncio
 import os
 import time
 from pathlib import Path
+import pandas as pd
 import streamlit.components.v1 as components
 
 def initialize_session_state():
@@ -42,6 +43,24 @@ def display_chat_history():
                             components.html(html_file, height=500)
                     else:
                         st.warning(f"HTML file not found: {html_path}")
+                if 'csv_path' in message and message['csv_path']:
+                    csv_path = message['csv_path']
+                    if csv_path and os.path.exists(csv_path):
+                        with st.expander("Inspect data"):
+                            st.dataframe(pd.read_csv(csv_path))
+                
+                # Add PDF download button if pdf_path exists
+                if 'pdf_path' in message and message['pdf_path']:
+                    pdf_path = message['pdf_path']
+                    if pdf_path and os.path.exists(pdf_path):
+                        with open(pdf_path, 'rb') as pdf_file:
+                            st.download_button(
+                                label="Download PDF Report",
+                                data=pdf_file,
+                                file_name=Path(pdf_path).name,
+                                mime="application/pdf"
+                            )
+                        st.caption(f"File stored at: {pdf_path}")
 
 def process_user_query(user_query):
     """Process the user query using the agent module and update the chat history"""
@@ -68,6 +87,9 @@ def process_user_query(user_query):
             html_path = response.html_path
             pdf_path = response.pdf_path
             code_string = response.code_string
+            csv_path = response.csv_path
+            pdf_path = response.pdf_path
+            
 
             # Create a container for both markdown and map
             with message_placeholder.container():
@@ -79,17 +101,21 @@ def process_user_query(user_query):
                     with st.expander("View Map", expanded=True):
                         html_file = Path(html_path).read_text(encoding="utf-8")
                         components.html(html_file, height=500)
+
+                if csv_path and os.path.exists(csv_path):
+                    with st.expander("Inspect data"):
+                        st.dataframe(pd.read_csv(csv_path))
             
             # Add the assistant's response to the chat history
             st.session_state.messages.append({
                 "role": "assistant", 
                 "content": "Response generated", 
                 "markdown_content": markdown_report,
-                "html_path": html_path
+                "html_path": html_path,
+                "csv_path": csv_path,
+                "pdf_path": pdf_path
             })
             
-            st.session_state.pdfs.append(pdf_path)
-            st.session_state.csvs.append(code_string)
             
         except Exception as e:
             error_message = f"An error occurred: {str(e)}"

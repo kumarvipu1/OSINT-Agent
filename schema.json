@@ -1,0 +1,547 @@
+{
+    "Graph Schema": [
+        {
+            "graph_name": "OPEN_INTELLIGENCE",
+            "edge_definitions": [
+                {
+                    "edge_collection": "eventActor",
+                    "from_vertex_collections": [
+                        "Event"
+                    ],
+                    "to_vertex_collections": [
+                        "Actor"
+                    ]
+                },
+                {
+                    "edge_collection": "hasLocation",
+                    "from_vertex_collections": [
+                        "Event"
+                    ],
+                    "to_vertex_collections": [
+                        "Location"
+                    ]
+                },
+                {
+                    "edge_collection": "hasSource",
+                    "from_vertex_collections": [
+                        "Event"
+                    ],
+                    "to_vertex_collections": [
+                        "Source"
+                    ]
+                },
+                {
+                    "edge_collection": "inCountry",
+                    "from_vertex_collections": [
+                        "Location"
+                    ],
+                    "to_vertex_collections": [
+                        "Country"
+                    ]
+                },
+                {
+                    "edge_collection": "inRegion",
+                    "from_vertex_collections": [
+                        "Country"
+                    ],
+                    "to_vertex_collections": [
+                        "Region"
+                    ]
+                },
+                {
+                    "edge_collection": "subClass",
+                    "from_vertex_collections": [
+                        "Class"
+                    ],
+                    "to_vertex_collections": [
+                        "Class"
+                    ]
+                },
+                {
+                    "edge_collection": "type",
+                    "from_vertex_collections": [
+                        "Event"
+                    ],
+                    "to_vertex_collections": [
+                        "Class"
+                    ]
+                }
+            ]
+        }
+    ],
+    "Collection Schema": [
+        {
+            "collection_name": "Class",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "Violence_against_civilians",
+                "_id": "Class/Violence_against_civilians",
+                "_rev": "_jTfHTKO---",
+                "name": "Violence against civilians"
+            }
+        },
+        {
+            "collection_name": "inRegion",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "Angola-Middle_Africa",
+                "_id": "inRegion/Angola-Middle_Africa",
+                "_from": "Country/Angola",
+                "_to": "Region/Middle_Africa",
+                "_rev": "_jTfIGhC---"
+            }
+        },
+        {
+            "collection_name": "hasLocation",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "ALG1-61112d48fd89b4045a476e500a51bc5c",
+                "_id": "hasLocation/ALG1-61112d48fd89b4045a476e500a51bc5c",
+                "_from": "Event/ALG1",
+                "_to": "Location/61112d48fd89b4045a476e500a51bc5c",
+                "_rev": "_jTfHudK---"
+            }
+        },
+        {
+            "collection_name": "subClass",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "Violence_against_civilians-Attack",
+                "_id": "subClass/Violence_against_civilians-Attack",
+                "_from": "Class/Violence_against_civilians",
+                "_to": "Class/Attack",
+                "_rev": "_jTfIG4m---"
+            }
+        },
+        {
+            "collection_name": "type",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "143072967",
+                "_id": "type/143072967",
+                "_from": "Event/ALG1",
+                "_to": "Class/Violence_against_civilians",
+                "_rev": "_jTfIJA2---",
+                "name": "Violence against civilians"
+            }
+        },
+        {
+            "collection_name": "eventActor",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "63500328",
+                "_id": "eventActor/63500328",
+                "_from": "Event/ALG1",
+                "_to": "Actor/b4226a92202dcdf01cdee130abd85928",
+                "_rev": "_jTfHiV2---"
+            }
+        },
+        {
+            "collection_name": "hasSource",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "ALG1-b30282f2374cee867a9f7e2a62deb1b5",
+                "_id": "hasSource/ALG1-b30282f2374cee867a9f7e2a62deb1b5",
+                "_from": "Event/ALG1",
+                "_to": "Source/b30282f2374cee867a9f7e2a62deb1b5",
+                "_rev": "_jTfH6Xe---"
+            }
+        },
+        {
+            "collection_name": "inCountry",
+            "collection_type": "edge",
+            "edge_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_from",
+                    "type": "str"
+                },
+                {
+                    "name": "_to",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                }
+            ],
+            "example_edge": {
+                "_key": "61112d48fd89b4045a476e500a51bc5c-Algeria",
+                "_id": "inCountry/61112d48fd89b4045a476e500a51bc5c-Algeria",
+                "_from": "Location/61112d48fd89b4045a476e500a51bc5c",
+                "_to": "Country/Algeria",
+                "_rev": "_jTfIF-S---"
+            }
+        },
+        {
+            "collection_name": "Location",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "61112d48fd89b4045a476e500a51bc5c",
+                "_id": "Location/61112d48fd89b4045a476e500a51bc5c",
+                "_rev": "_jTfHeii---",
+                "name": "Douaouda"
+            }
+        },
+        {
+            "collection_name": "Event",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "date",
+                    "type": "str"
+                },
+                {
+                    "name": "dateStamp",
+                    "type": "int"
+                },
+                {
+                    "name": "description",
+                    "type": "str"
+                },
+                {
+                    "name": "fatalities",
+                    "type": "int"
+                },
+                {
+                    "name": "geo",
+                    "type": "dict"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                },
+                {
+                    "name": "label",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "ALG1",
+                "_id": "Event/ALG1",
+                "_rev": "_jTfHXh6---",
+                "date": "1997-01-01T00:00:00.000Z",
+                "dateStamp": 852076800000,
+                "description": "5 January: Beheading of 5 citizens in Douaouda (Tipaza).",
+                "fatalities": 5,
+                "geo": {
+                    "type": "Point",
+                    "coordinates": [
+                        36.672,
+                        2.789
+                    ]
+                },
+                "name": "Beheading of 5 citizens in Dou",
+                "label": "Violence_against_civilians"
+            }
+        },
+        {
+            "collection_name": "Source",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                },
+                {
+                    "name": "sourceScale",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "b30282f2374cee867a9f7e2a62deb1b5",
+                "_id": "Source/b30282f2374cee867a9f7e2a62deb1b5",
+                "_rev": "_jTfHg_2---",
+                "name": "Algeria Watch",
+                "sourceScale": "Other"
+            }
+        },
+        {
+            "collection_name": "Country",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "Algeria",
+                "_id": "Country/Algeria",
+                "_rev": "_jTfHTfS---",
+                "name": "Algeria"
+            }
+        },
+        {
+            "collection_name": "Region",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "Northern_Africa",
+                "_id": "Region/Northern_Africa",
+                "_rev": "_jTfHfOC---",
+                "name": "Northern Africa"
+            }
+        },
+        {
+            "collection_name": "Actor",
+            "collection_type": "document",
+            "document_properties": [
+                {
+                    "name": "_key",
+                    "type": "str"
+                },
+                {
+                    "name": "_id",
+                    "type": "str"
+                },
+                {
+                    "name": "_rev",
+                    "type": "str"
+                },
+                {
+                    "name": "name",
+                    "type": "str"
+                }
+            ],
+            "example_document": {
+                "_key": "228e62bfcd97e3cb8a559cba8a9e7b27",
+                "_id": "Actor/228e62bfcd97e3cb8a559cba8a9e7b27",
+                "_rev": "_jTfHSqa---",
+                "name": "Zouar Communal Militia (Chad)"
+            }
+        }
+    ]
+}
