@@ -17,4 +17,5 @@ nx-arangodb
 nx-cugraph-cu12
 langchain-community 
 langchain-openai 
+langchain-experimental
 langgraph
