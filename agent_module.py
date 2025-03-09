@@ -18,10 +18,6 @@ import streamlit as st
 
 dotenv.load_dotenv()
 
-# if LOGFIRE_TOKEN in env, then initialize logfire
-if os.getenv("LOGFIRE_TOKEN"):
-    logfire.configure(token=os.getenv("LOGFIRE_TOKEN"))
-
 # Initialize session state for credentials if not exists
 if 'credentials' not in st.session_state:
     st.session_state.credentials = {
