@@ -28,13 +28,9 @@ pip install -r requirements.txt
 ```
 
 3. Set up your environment variables:
-Create a `.env` file with the following contents:
-```
-OPENAI_API_KEY=your_openai_api_key
-ARANGODB_URL=your_arangodb_url
-ARANGODB_USERNAME=your_arango_username
-ARANGODB_PASSWORD=your_arango_password
-```
+- Use the credentials form in the sidebar to enter your credentials.
+
+> **Note:** Logfire token is optional, it is used to track the usage of the agent.
 
 ## Usage
 
@@ -46,23 +42,29 @@ streamlit run app_ui.py
 2. Open your browser and navigate to `http://localhost:8501`
 
 3. Begin by asking a question in the chat interface, such as:
-   - "Show me conflict events in the Middle East in 2020"
+   - "Show me conflict where the number of fatalities is greater than 1000"
    - "What are the top actor groups involved in conflicts in Africa?"
-   - "Map the events with the most fatalities in Europe"
-   - "Compare conflict trends in Asia between 2018 and 2022"
+   - "Map the events with the most fatalities in the year 2015"
+   - "Compare conflict trends in between 2018 and 2022"
 
 ## Architecture
 
 The Open Intelligence platform consists of the following components:
 
 - **Streamlit UI**: A clean, professional chat interface for user interaction
-- **Agent Module**: An AI-powered agent that processes user queries
+- **Agent Module**: An AI-powered agent that processes user queries uses pydanticAI as a framework and Logfire for observability.
 - **Graph Database**: ArangoDB instance storing global event data
 - **Data Visualization**: Dynamic visualization tools for maps and charts
 
 ## Example Queries
 
-- **Regional Analysis**: "Show me conflicts in Eastern Europe in 2022"
+- **Regional Analysis**: "Show me conflicts in North Africa in 2022"
 - **Actor Analysis**: "Which groups were most active in Syria?"
 - **Temporal Analysis**: "Compare conflict patterns before and after COVID-19"
 - **Geospatial Analysis**: "Show me a heatmap of events near border regions"
+
+## Future Work
+
+- Add more data sources and visualizations
+- Implement more complex analysis and reporting
+- Add more features to the agent module
