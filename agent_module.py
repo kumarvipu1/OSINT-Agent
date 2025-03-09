@@ -18,6 +18,13 @@ import streamlit as st
 
 dotenv.load_dotenv()
 
+# Set page config must be the first Streamlit command
+st.set_page_config(
+    page_title="Open Intelligence",
+    page_icon="🌍",
+    layout="wide",
+)
+
 # Initialize session state for credentials if not exists
 if 'credentials' not in st.session_state:
     st.session_state.credentials = {

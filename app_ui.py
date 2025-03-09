@@ -1,11 +1,4 @@
 import streamlit as st
-# Set page config must be the first Streamlit command
-st.set_page_config(
-    page_title="Open Intelligence",
-    page_icon="🌍",
-    layout="wide",
-)
-
 import agent_module
 import asyncio
 import nest_asyncio
@@ -14,6 +7,7 @@ import time
 from pathlib import Path
 import pandas as pd
 import streamlit.components.v1 as components
+
 
 def initialize_session_state():
     """Initialize session state variables if they don't exist"""
