@@ -19,3 +19,4 @@ langchain-community
 langchain-openai 
 langchain-experimental
 langgraph
+markdown-pdf
