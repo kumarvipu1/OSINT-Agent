@@ -48,7 +48,10 @@ with st.sidebar:
             missing_fields = [field for field, value in st.session_state.credentials.items() 
                             if not value.strip()]
             
-            if missing_fields in ['openai_api', 'arango_url', 'arango_username', 'arango_password']:
+            required_fields = ['openai_api', 'arango_url', 'arango_username', 'arango_password']
+            missing_required = any(field in missing_fields for field in required_fields)
+            
+            if missing_required:
                 st.error(f"Please fill in all required fields: {', '.join(missing_fields)}")
             else:
                 st.success("Credentials saved!")
@@ -57,6 +60,8 @@ with st.sidebar:
 # Configure logfire if token is provided
 if st.session_state.credentials['logfire_token']:
     logfire.configure(token=st.session_state.credentials['logfire_token'])
+else:
+    pass
 
 if st.session_state.credentials['arango_url'] and st.session_state.credentials['arango_username'] and st.session_state.credentials['arango_password']:
     # Initialize the ArangoDB client with session state credentials
